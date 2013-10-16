@@ -8,6 +8,6 @@ module.exports = {
 			//url: 'http://localhost:5000/'
 			//url: 'http://10.0.2.2:5000/'				//android emulator path, must change app settings to match
 		},
-		//dbUrl: 'mongodb://localhost/LOCALMONGODBINSTANCENAME'
+		dbUrl: 'mongodb://localhost/LOCALMONGODBINSTANCENAME'
 	}
 }
