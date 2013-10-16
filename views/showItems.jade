@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+	div
+		br
+		br
+		text Note: #{list.note}
+		br
+		text Tag: #{list.tag}
+
+	form(method="POST", action="/list/#{list._id}/newItem")
+		input(type="hidden", name="_method", value="PUT")
+		p Value:
+			input#value(type="number", name="value", min="1", required="true", step="any",placeholder="Number Value")
+		p	
+			button(type="submit", data-icon="plus") Add Item
+
+	ul
+		each item in list.item
+			div #{item.date.getMonth()}/#{item.date.getDate()}: #{item.value} #{list.unit}
+
+	br
+	br
+	a(href="/list/#{list._id}/itemGraph", data-role="button", data-ajax="false") Show Graph
+	a(href="/list/#{list._id}/#{list.tag}", data-role="button") Show Tag
+	br
+
+	form(method="POST", action="/list/#{list._id}/delItem")
+		input(type="hidden", name="_method", value="PUT")
+		p
+			button(type="submit", data-icon="minus") Delete Last Item

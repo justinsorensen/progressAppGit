@@ -1,0 +1,15 @@
+{
+  "name": "progressApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "3.3.4",
+    "jade": "*",
+    "mongoose":"3.6.16",
+    "passport":"0.1.17",
+    "passport-facebook":"0.1.5"
+  }
+}

@@ -1,0 +1,11 @@
+extends layout
+
+h1= New User
+
+block content
+	center
+		h1 Hi, #{user.name}!!!
+		p This app is still under development, so please forgive the mess.
+
+		div
+			button(onclick="location.href='/list';") Show Lists

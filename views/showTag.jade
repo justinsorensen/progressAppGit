@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	center
+		h1 Tag: #{tag.tag}
+		text click on a list to compare progress:
+
+	ul
+		each tagged in list
+			li
+				a(href='/list/#{tag.id}/#{tag.tag}/#{tagged.id}/compareTag', data-role="button", data-ajax="false") Compare to #{tagged.name}
+				//button(onclick="location.href='/list/#{list._id}';") #{list.name}

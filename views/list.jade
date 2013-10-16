@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	h2 #{user.name}
+
+	h Here are your lists:
+		
+		each list in lists
+			if(user.fbId == list.userID)
+				//a(href="/list/#{list._id}") Name: #{list.name} Tag: #{list.tag} UserID: #{list.userID} objectId: #{list._id}
+				button(onclick="location.href='/list/#{list._id}';") #{list.name}
+	br
+	br
+	div
+		button(onclick="location.href='/listCreate';", data-icon="plus") Create New List
+	div
+		button(onclick="location.href='/listEdit';", data-icon="minus") Edit Lists

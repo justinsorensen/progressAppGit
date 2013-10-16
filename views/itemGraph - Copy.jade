@@ -1,0 +1,50 @@
+doctype 5
+html
+head
+	//script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+	script(type='text/javascript', src="/javascripts/jquery-1.10.2.min.js")
+	script(type='text/javascript', src="/javascripts/flot/jquery.flot.js")
+	script(type='text/javascript', src="/javascripts/flot/jquery.flot.time.js")
+	script(type='text/javascript', src="/javascripts/date.format.js")
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	script(type='text/javascript').
+		$(document).ready(function() {
+			var json =!{JSON.stringify(graph)};
+			console.log(json);
+			var x = new Date(JSON.parse(JSON.stringify(new Date())));
+			console.log(x.getTime());
+			var d1 = [];
+			console.log("Before function");
+			for(var i =0; i < json.length; i++) {
+				var y = Date.parse(json[i].date);
+				d1.push([y, json[i].value]);			//pushing date and value onto array
+				console.log("Result of y: " + y);
+				console.log("value: " + json[i].value);
+				console.log("date: " + json[i].date);
+				console.log("during function pass: " + i);
+				console.log(d1);
+			}
+			$.plot("#placeholder", [{data: d1, lines: { show: true }, points: { show: true }, grid: { hoverable: true }}], 
+									{ xaxis:{ mode: "time", timezone: "browser", timeformat: "%m/%d %I:%M"}});
+		
+
+		});
+
+body
+	block content
+		h1 #{list.name}
+		div(class="demo-container")
+			div(id="placeholder", class="demo-placeholder")
+
+		h1 itemGraph #{list.name}
+		ul
+			each item in graph
+				li
+					div #{item.value} #{item.date.toDateString()}
+
+footer
+	block footer
+		a(href="/logout") Logout 
+		a(href="/list") Return to list
+		button(onclick="location.href='/logout';") Logout
+		button(onclick="location.href='/list';") Return to list

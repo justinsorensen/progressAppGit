@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h2 #{user.name}
+
+	h Here are your lists:
+		each list in lists
+			if(user.fbId == list.userID)
+				button(onclick="location.href='/list/destroy/#{list._id}';", data-icon="delete") #{list.name}

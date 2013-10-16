@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+	h1 Your lists
+
+	h2 #{user.name}
+
+	form(method="POST", action="/list")
+		p
+			text Add a new list:
+		p 
+			input#name(type="text", name="name", placeholder="List Name", maxlength="20")
+		p
+			input#unit(type="text", name="unit", placeholder="Units", maxlength="5")
+		p 
+			input#tag(type="text", name="tag", placeholder="Tag", maxlength="20")
+		p 
+			input#note(type="text", name="note", placeholder="Note", maxlength="140")
+		p 
+			button(type="submit", data-icon="plus") Create
+
